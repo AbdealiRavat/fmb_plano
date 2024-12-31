@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../model/list_model.dart';
 
 class HomeController extends GetxController {
+  // RxList<bool> isSelected = <bool>[].obs;
   RxList<DrawerListModel> drawerList = <DrawerListModel>[
     DrawerListModel(index: 0, title: 'Home', icon: 'asset/images/home1.png'),
     DrawerListModel(index: 1, title: 'Monthly Menu', icon: 'asset/images/menus1.png'),
@@ -14,4 +15,7 @@ class HomeController extends GetxController {
     DrawerListModel(index: 7, title: 'Filling', icon: 'asset/images/thaali1.png'),
     DrawerListModel(index: 8, title: 'Exit', icon: 'asset/images/logout1.png'),
   ].obs;
+
+  RxList<bool> isSelected = List<bool>.filled(9, false).obs;
+  RxInt selectedIndex = 0.obs;
 }

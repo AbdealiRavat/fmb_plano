@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fmb_app/view/auth/controller/login_controller.dart';
-import 'package:fmb_app/view/home/screens/home_screen.dart';
 import 'package:get/get.dart';
 
 import '../../../components/custom_text_form_field.dart';
 import '../../../util/common.dart';
 import '../../../util/fade_animation.dart';
+import '../../../util/toast.dart';
+import '../../home/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,7 +18,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   LoginController loginController = Get.put(LoginController());
-  bool flag = true;
+  TextEditingController itsController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +50,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Form(
                 child: Column(
                   children: [
-                    const FadeInAnimation(
+                    FadeInAnimation(
                       delay: 1.9,
                       child: CustomTextFormField(
+                        controller: itsController,
                         hinttext: 'Enter your ITS number',
                         obsecuretext: false,
                       ),
@@ -61,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     FadeInAnimation(
                       delay: 2.2,
                       child: Obx(() => TextFormField(
+                            controller: passwordController,
                             obscureText: loginController.flag.value,
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.all(18),
@@ -84,16 +88,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: CustomElevatedButton(
                         message: "Login",
                         function: () {
-                          Get.to(() => HomeScreen());
-                          if (flag) {
-                            setState(() {
-                              flag = false;
-                            });
+                          if (itsController.text.isEmpty) {
+                            CommonToast.showDialog('Enter ITS number');
+                          } else if (passwordController.text.isEmpty) {
+                            CommonToast.showDialog('Enter password');
                           } else {
-                            setState(() {
-                              flag = true;
-                            });
+                            // loginController.login(itsController.text, passwordController.text);
+                            Get.to(() => HomeScreen());
                           }
+
+                          // Get.to(() => HomeScreen());
                         },
                         color: Colors.black,
                       ),

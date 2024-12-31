@@ -8,12 +8,12 @@ import '../util/common.dart';
 class CustomTextFormField extends StatefulWidget {
   final String hinttext;
   final bool obsecuretext;
-  final TextEditingController? controller;
+  final TextEditingController controller;
   const CustomTextFormField({
     Key? key,
     required this.hinttext,
     required this.obsecuretext,
-    this.controller,
+    required this.controller,
   }) : super(key: key);
 
   @override

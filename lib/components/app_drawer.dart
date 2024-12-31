@@ -66,7 +66,8 @@ class AppDrawer extends StatelessWidget {
                   splashFactory: InkRipple.splashFactory,
                   onTap: () {
                     print(Get.currentRoute);
-                    Get.back();
+                    // Get.currentRoute == ;
+                    // homeController.isSelected[index] = true;
                     if (index != 8) {
                       String name = index == 0
                           ? RouteName.home
@@ -83,6 +84,7 @@ class AppDrawer extends StatelessWidget {
                                               : index == 6
                                                   ? RouteName.helpline
                                                   : RouteName.filling;
+                      Get.back();
                       Get.offNamed(name);
                       print(index);
                     } else {
@@ -101,10 +103,13 @@ class AppDrawer extends StatelessWidget {
                         SizedBox(
                           width: 20.w,
                         ),
-                        Text(
-                          homeController.drawerList[index].title,
-                          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400),
-                        ),
+                        Obx(() => Text(
+                              homeController.drawerList[index].title,
+                              style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            )),
                       ],
                     ),
                   ),

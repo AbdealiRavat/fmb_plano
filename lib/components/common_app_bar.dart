@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fmb_app/util/colors.dart';
 
 class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
   String title;
@@ -10,7 +11,7 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(20.r))),
-      backgroundColor: Color(0xFFFFC70F),
+      backgroundColor: AppColors.primary,
       title: Text(
         title,
         style: TextStyle(
