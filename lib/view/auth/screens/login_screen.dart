@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fmb_app/util/colors.dart';
 import 'package:fmb_app/view/auth/controller/login_controller.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +8,6 @@ import '../../../components/custom_text_form_field.dart';
 import '../../../util/common.dart';
 import '../../../util/fade_animation.dart';
 import '../../../util/toast.dart';
-import '../../home/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,6 +20,14 @@ class _LoginScreenState extends State<LoginScreen> {
   LoginController loginController = Get.put(LoginController());
   TextEditingController itsController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    // loginController.getFcmToken();
+    loginController.getVersionInfo();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,24 +35,25 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
+          shrinkWrap: true,
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           padding: EdgeInsets.all(10.w),
           children: [
-            SizedBox(height: 45.h),
+            SizedBox(height: 20.h),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: FadeInAnimation(
                 delay: 1.3,
                 child: Image.asset(
-                  'asset/images/logo.png',
+                  'asset/icons/icon.png',
                   height: 250.h,
                   // width: 200.w,
                   alignment: Alignment.center,
                 ),
               ),
             ),
-            SizedBox(height: 45.h),
+            SizedBox(height: 20.h),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Form(
@@ -73,6 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border: OutlineInputBorder(
                                     borderSide: const BorderSide(color: Colors.black),
                                     borderRadius: BorderRadius.circular(12)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide:
+                                        const BorderSide(color: AppColors.secondary, width: 2),
+                                    borderRadius: BorderRadius.circular(12)),
                                 suffixIcon: IconButton(
                                     onPressed: () {
                                       loginController.flag.value = !loginController.flag.value;
@@ -93,8 +106,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else if (passwordController.text.isEmpty) {
                             CommonToast.showDialog('Enter password');
                           } else {
-                            // loginController.login(itsController.text, passwordController.text);
-                            Get.to(() => HomeScreen());
+                            loginController.login(itsController.text, passwordController.text);
+                            itsController.clear();
+                            passwordController.clear();
+                            // Get.to(() => HomeScreen());
                           }
 
                           // Get.to(() => HomeScreen());
@@ -106,15 +121,66 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 35.h),
+            SizedBox(height: 20.h),
             Padding(
               padding: EdgeInsets.all(12.w),
+              child: GestureDetector(
+                onTap: () {
+                  loginController.openMail();
+                },
+                child: FadeInAnimation(
+                  delay: 1.3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Helpdesk : ',
+                        textAlign: TextAlign.center,
+                        style: Common().mediumTheme,
+                      ),
+                      Text(
+                        'fmbsingapore@gmail.com',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15.sp,
+                            fontFamily: "Urbanist-Bold",
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Color.fromARGB(255, 72, 151, 151),
+                            color: Color.fromARGB(255, 72, 151, 151)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(6.w),
               child: FadeInAnimation(
                 delay: 1.3,
                 child: Text(
-                  'Helpdesk : fmb@planojamat.com',
+                  'Powered by Saify Solutions',
                   textAlign: TextAlign.center,
-                  style: Common().mediumTheme,
+                  style: TextStyle(
+                      fontSize: 15.sp,
+                      fontFamily: "Urbanist-Bold",
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.black),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(6.w),
+              child: FadeInAnimation(
+                delay: 1.3,
+                child: Text(
+                  'v2.3.0',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 14.sp,
+                      fontFamily: "Urbanist-Bold",
+                      fontWeight: FontWeight.w300,
+                      color: AppColors.black),
                 ),
               ),
             ),

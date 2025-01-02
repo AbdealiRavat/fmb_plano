@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import '../util/colors.dart';
 import '../util/common.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -26,9 +28,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return TextFormField(
       controller: widget.controller,
       obscureText: widget.obsecuretext,
+      keyboardType: TextInputType.number,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(18),
           // border: InputBorder.none,
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.secondary, width: 2),
+              borderRadius: BorderRadius.circular(12)),
           border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.black),
               borderRadius: BorderRadius.circular(12)),

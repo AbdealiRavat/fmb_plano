@@ -10,7 +10,7 @@ class CommonToast {
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.secondary,
         textColor: AppColors.white,
         fontSize: 14.sp);
   }
