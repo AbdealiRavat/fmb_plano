@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fmb_app/util/colors.dart';
+import 'package:fmb_app/view/home/screens/home_screen.dart';
 import 'package:get/get.dart';
 
-import '../routes/routes_name.dart';
 import '../view/home/controller/home_controller.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -33,21 +34,20 @@ class AppDrawer extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 50.h),
                 // decoration: BoxDecoration(color: Colors.amber),
                 alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Wrap(
                   children: [
                     Text(
-                      'Anjuman-e-Taheri',
+                      'Faizul Al Mawaid Al Burhaniyah ',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        fontSize: 24.sp,
+                        fontSize: 22.sp,
                       ),
                     ),
                     Text(
-                      'FMB - Plano',
+                      'Singapore',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: AppColors.secondary,
                         fontWeight: FontWeight.w500,
                         fontSize: 24.sp,
                       ),
@@ -69,27 +69,29 @@ class AppDrawer extends StatelessWidget {
                     // Get.currentRoute == ;
                     // homeController.isSelected[index] = true;
                     if (index != 8) {
-                      String name = index == 0
-                          ? RouteName.home
-                          : index == 1
-                              ? RouteName.monthlyMenu
-                              : index == 2
-                                  ? RouteName.thaaliSignup
-                                  : index == 3
-                                      ? RouteName.stopThaali
-                                      : index == 4
-                                          ? RouteName.myProfile
-                                          : index == 5
-                                              ? RouteName.feedback
-                                              : index == 6
-                                                  ? RouteName.helpline
-                                                  : RouteName.filling;
+                      // String name = index == 0
+                      //     ? RouteName.home
+                      //     : index == 1
+                      //         ? RouteName.stopThaali
+                      //         : index == 2
+                      //             ? RouteName.changeThaali
+                      //             : index == 3
+                      //                 ? RouteName.monthlyMenu
+                      //                 : index == 4
+                      //                     ? RouteName.myProfile
+                      //                     : index == 5
+                      //                         ? RouteName.feedback
+                      //                         : index == 6
+                      //                             ? RouteName.helpline
+                      //                             : RouteName.news;
+                      String name = homeController.drawerList[index].urlName;
+                      String title = homeController.drawerList[index].title;
                       Get.back();
-                      Get.offNamed(name);
+                      Get.offAll(() => HomeScreen(), arguments: [name, title]);
                       print(index);
                     } else {
                       Get.back();
-                      Get.offNamed(RouteName.loginScreen);
+                      homeController.logout();
                     }
                   },
                   child: Padding(
