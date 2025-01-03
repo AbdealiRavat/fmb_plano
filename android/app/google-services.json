@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "45099362023",
+    "project_id": "fmb-singapore",
+    "storage_bucket": "fmb-singapore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45099362023:android:d9cff37fd8dc74f414a442",
+        "android_client_info": {
+          "package_name": "com.saifysolutions.FMBSingNew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45099362023-apc4a4lkug7cha1g83sg7pi1qivmgpra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM8J5MyZGydxG8TZhlHWUzRaEIC6PjL54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45099362023-apc4a4lkug7cha1g83sg7pi1qivmgpra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

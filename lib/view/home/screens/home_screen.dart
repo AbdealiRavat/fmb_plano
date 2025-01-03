@@ -44,12 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageFinished: (url) {
             debugPrint('page finished loading ${homeController.webViewUrl.value}');
           },
-          onNavigationRequest: (navigation) {
-            if (navigation.url != homeController.webViewUrl.value) {
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          },
+          // onNavigationRequest: (navigation) {
+          //   if (navigation.url != homeController.webViewUrl.value) {
+          //     return NavigationDecision.prevent;
+          //   }
+          //   return NavigationDecision.navigate;
+          // },
         ),
       )
       // ..loadRequest(Uri.parse('https://flutter.dev'));

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fmb_app/view/home/screens/home_screen.dart';
 import 'package:get/get.dart';
@@ -21,13 +22,16 @@ class LoginController extends GetxController {
   login(String its, String password) async {
     isLoading(true);
     int deviceType = Platform.isAndroid ? 1 : 0;
-    final url = "${Constant.getData}$its&password=$password&device_id=XX&device_type=$deviceType";
+    String deviceId = SharedPrefs.getStringInfo('fcmToken');
+    final url =
+        "${Constant.getData}$its&password=$password&device_id=$deviceId&device_type=$deviceType";
     try {
       http.Response response = await http.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
         'Accept': '*/*',
       });
       print(response.body);
+      print(url);
       if (response.statusCode == 200) {
         if (response.body.contains('error')) {
           List<String> arr = response.body.split(":");
@@ -45,7 +49,7 @@ class LoginController extends GetxController {
           await SharedPrefs.setStringInfo('name', name);
           await SharedPrefs.setStringInfo('itsNo', its);
           await SharedPrefs.setStringInfo('password', password);
-          await SharedPrefs.setStringInfo('result', response.body);
+          await SharedPrefs.setStringInfo('result', tempString);
           await SharedPrefs.setIntroBool('isLoggedIn', true);
           Get.offAll(() => const HomeScreen(), arguments: ['home', 'Home']);
           CommonToast.showDialog('Welcome $name');
@@ -76,10 +80,13 @@ class LoginController extends GetxController {
     version(packageInfo.version);
   }
 
-  getFcmToken() {
+  getFcmToken() async {
+    await Firebase.initializeApp();
     FirebaseMessaging.instance.getToken().then(
-      (value) {
+      (value) async {
         fcmToken = value.toString();
+        await SharedPrefs.setStringInfo('fcmToken', fcmToken);
+        print(fcmToken);
       },
     );
   }

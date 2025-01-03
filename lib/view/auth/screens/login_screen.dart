@@ -23,8 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // loginController.getFcmToken();
-    loginController.getVersionInfo();
+    loginController.getFcmToken();
+    // loginController.getVersionInfo();
     super.initState();
   }
 
@@ -100,13 +100,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       delay: 2.8,
                       child: CustomElevatedButton(
                         message: "Login",
-                        function: () {
+                        function: () async {
                           if (itsController.text.isEmpty) {
                             CommonToast.showDialog('Enter ITS number');
                           } else if (passwordController.text.isEmpty) {
                             CommonToast.showDialog('Enter password');
                           } else {
-                            loginController.login(itsController.text, passwordController.text);
+                            await loginController.login(
+                                itsController.text, passwordController.text);
                             itsController.clear();
                             passwordController.clear();
                             // Get.to(() => HomeScreen());
