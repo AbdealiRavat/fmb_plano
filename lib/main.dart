@@ -9,13 +9,13 @@ import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: const FirebaseOptions(
-          apiKey: "AIzaSyDM8J5MyZGydxG8TZhlHWUzRaEIC6PjL54",
-          appId: "1:45099362023:android:d9cff37fd8dc74f414a442",
-          messagingSenderId: "45099362023",
-          projectId: "fmb-singapore"));
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+  // await Firebase.initializeApp(
+  //     options: const FirebaseOptions(
+  //         apiKey: "AIzaSyDM8J5MyZGydxG8TZhlHWUzRaEIC6PjL54",
+  //         appId: "1:45099362023:android:d9cff37fd8dc74f414a442",
+  //         messagingSenderId: "45099362023",
+  //         projectId: "fmb-singapore"));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((value) => runApp(const MyApp()));
   SharedPrefs.init();
 }
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
+            defaultTransition: Transition.fade,
             title: 'FMB Singapore',
             getPages: Routes.route(),
             initialRoute: RouteName.splash,

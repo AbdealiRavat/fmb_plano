@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../util/colors.dart';
 import '../util/common.dart';
@@ -31,14 +32,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(18),
+          contentPadding:  EdgeInsets.all(18.r),
           // border: InputBorder.none,
           focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.secondary, width: 2),
+              borderSide:  BorderSide(color: AppColors.secondary, width: 2.w),
               borderRadius: BorderRadius.circular(12)),
           border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.black),
-              borderRadius: BorderRadius.circular(12)),
+              borderRadius: BorderRadius.circular(12.r)),
           hintText: widget.hinttext,
           hintStyle: Common().hinttext),
     );
@@ -78,12 +79,12 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
         });
       },
       style: ButtonStyle(
-          side: const MaterialStatePropertyAll(BorderSide(color: Colors.grey)),
+          side:  MaterialStatePropertyAll(BorderSide(color: Colors.grey)),
           shape: MaterialStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-          fixedSize: const MaterialStatePropertyAll(Size.fromWidth(370)),
-          padding: const MaterialStatePropertyAll(
-            EdgeInsets.symmetric(vertical: 20),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))),
+          fixedSize:  MaterialStatePropertyAll(Size.fromWidth(370.w)),
+          padding:  MaterialStatePropertyAll(
+            EdgeInsets.symmetric(vertical: 20.w),
           ),
           backgroundColor: MaterialStatePropertyAll(widget.color)),
       child: loading

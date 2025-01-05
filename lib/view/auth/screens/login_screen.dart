@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    loginController.getFcmToken();
+    // loginController.getFcmToken();
     // loginController.getVersionInfo();
     super.initState();
   }
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             SizedBox(height: 20.h),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.w),
               child: FadeInAnimation(
                 delay: 1.3,
                 child: Image.asset(
@@ -76,21 +76,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: passwordController,
                             obscureText: loginController.flag.value,
                             decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(18),
+                                contentPadding:  EdgeInsets.all(18.r),
                                 hintText: "Enter your password",
                                 hintStyle: Common().hinttext,
                                 border: OutlineInputBorder(
                                     borderSide: const BorderSide(color: Colors.black),
-                                    borderRadius: BorderRadius.circular(12)),
+                                    borderRadius: BorderRadius.circular(12.r)),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide:
-                                        const BorderSide(color: AppColors.secondary, width: 2),
-                                    borderRadius: BorderRadius.circular(12)),
+                                         BorderSide(color: AppColors.secondary, width: 2.w),
+                                    borderRadius: BorderRadius.circular(12.r)),
                                 suffixIcon: IconButton(
                                     onPressed: () {
                                       loginController.flag.value = !loginController.flag.value;
                                     },
-                                    icon: const Icon(Icons.remove_red_eye_outlined))),
+                                    icon: Icon(Icons.remove_red_eye_outlined, size: 20.w,))),
                           )),
                     ),
                     SizedBox(
