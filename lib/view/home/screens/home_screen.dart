@@ -44,6 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
           onPageFinished: (url) {
             debugPrint('page finished loading ${homeController.webViewUrl.value}');
           },
+          onHttpError: (error) {
+            debugPrint('page load error $error');
+
+          },
           // onNavigationRequest: (navigation) {
           //   if (navigation.url != homeController.webViewUrl.value) {
           //     return NavigationDecision.prevent;
