@@ -15,7 +15,7 @@ class AppDrawer extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     return Drawer(
       backgroundColor: Colors.white,
-      width: 0.7.sw,
+      width: 0.75.sw,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -27,7 +27,7 @@ class AppDrawer extends StatelessWidget {
                   child: SvgPicture.asset(
                     'asset/svg/bg.svg',
                     semanticsLabel: 'bg Image',
-                    width: 0.7.sw,
+                    width: 0.75.sw,
                     // fit: BoxFit.contain,
                   ),
                 ),
