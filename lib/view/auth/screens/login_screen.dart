@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // loginController.getFcmToken();
+    loginController.getFcmToken();
     // loginController.getVersionInfo();
     super.initState();
   }
@@ -76,21 +76,23 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: passwordController,
                             obscureText: loginController.flag.value,
                             decoration: InputDecoration(
-                                contentPadding:  EdgeInsets.all(18.r),
+                                contentPadding: EdgeInsets.all(18.r),
                                 hintText: "Enter your password",
                                 hintStyle: Common().hinttext,
                                 border: OutlineInputBorder(
                                     borderSide: const BorderSide(color: Colors.black),
                                     borderRadius: BorderRadius.circular(12.r)),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                         BorderSide(color: AppColors.secondary, width: 2.w),
+                                    borderSide: BorderSide(color: AppColors.secondary, width: 2.w),
                                     borderRadius: BorderRadius.circular(12.r)),
                                 suffixIcon: IconButton(
                                     onPressed: () {
                                       loginController.flag.value = !loginController.flag.value;
                                     },
-                                    icon: Icon(Icons.remove_red_eye_outlined, size: 20.w,))),
+                                    icon: Icon(
+                                      Icons.remove_red_eye_outlined,
+                                      size: 20.w,
+                                    ))),
                           )),
                     ),
                     SizedBox(
@@ -175,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: FadeInAnimation(
                 delay: 1.3,
                 child: Text(
-                  'v2.3.0',
+                  'v2.4.0',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 14.sp,
