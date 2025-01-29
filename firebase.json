@@ -1,12 +1,1 @@
-{"flutter":
-{"platforms":
-{"android":
-{"default":
-{"projectId":"fmb-singapore",
-  "appId":"1:45099362023:android:59cdd30c80cf7e6f14a442",
-  "fileOutput":"android/app/google-services.json"}},
-  "dart":{"lib/firebase_options.dart":
-  {"projectId":"fmb-singapore","configurations":
-  {"android":"1:45099362023:android:59cdd30c80cf7e6f14a442",
-    "ios":"1:45099362023:ios:8eadbdece067dbce14a442"
-  }}}}}}
+{"flutter":{"platforms":{"android":{"default":{"projectId":"fmb-singapore","appId":"1:45099362023:android:59cdd30c80cf7e6f14a442","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"fmb-singapore","configurations":{"android":"1:45099362023:android:59cdd30c80cf7e6f14a442","ios":"1:45099362023:ios:8eadbdece067dbce14a442"}}}}}}
